@@ -42,6 +42,20 @@ services:
      airflow webserver & airflow scheduler
      "
    restart: always
+ mysql:
+   image: mysql:8.0
+   container_name: mysql-db
+   restart: always
+   environment:
+     MYSQL_ROOT_PASSWORD: root123
+     MYSQL_DATABASE: demo_db
+     MYSQL_USER: demo_user
+     MYSQL_PASSWORD: demo123
+   ports:
+     - "3306:3306"
+   volumes:
+     - mysql_data:/var/lib/mysql
 
 volumes:
  postgres-db:
+ mysql_data:
